@@ -1,2 +1,4 @@
 django==1.8.13
 Pillow==3.2.0
+ipython==5.1.0
+psycopg2==2.6.2
