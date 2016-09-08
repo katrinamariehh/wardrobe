@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ piece.name }}</h1>
+    <h2>{{ piece.clothing_type }}</h2>
+    <img src="{{ piece.image.url }}" style="height:150px">
+{% endblock %}

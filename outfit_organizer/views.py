@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 from .models import Season, Outfit, Piece, CLOTHING_TYPE_CHOICES
 
 
@@ -21,12 +22,12 @@ class SeasonOutfitListView(ListView):
         return context
 
 
-class PieceTypeView(ListView):
-    template_name = 'outfit_organizer/piece_type.html'
+class ClothingTypeSetView(ListView):
+    template_name = 'outfit_organizer/clothing_type_set.html'
     queryset = Piece.objects.all()
 
     def get_context_data(self, **kwargs):
-        context = super(PieceTypeView, self).get_context_data(**kwargs)
+        context = super(ClothingTypeSetView, self).get_context_data(**kwargs)
         piece_type = self.kwargs.get('piece_type')
         context['piece_type'] = piece_type
         return context
@@ -36,11 +37,19 @@ class PieceTypeView(ListView):
         return Piece.objects.filter(clothing_type=piece_type)
 
 
-class PieceTypeListView(ListView):
-    template_name = 'outfit_organizer/piece_type_list.html'
+class ClothingTypeListView(ListView):
+    template_name = 'outfit_organizer/clothing_type_list.html'
 
     def get_queryset(self):
         return [choice[1] for choice in CLOTHING_TYPE_CHOICES]
+
+
+class PieceListView(ListView):
+    model = Piece
+
+
+class PieceDetailView(DetailView):
+    model = Piece
 
 
 
