@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ season }} outfits</h2>
+    <li>
+        {% for outfit in object_list %}
+            {% for piece in outfit.pieces.all %}
+                <img src="{{ piece.image.url }}" style="height:150px">
+            {% endfor %}
+        {% endfor %}
+    </li>
+{% endblock %}

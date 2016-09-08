@@ -3,15 +3,17 @@ from django.db import models
 # Create your models here.
 
 
+CLOTHING_TYPE_CHOICES = (
+    ('bottom', 'bottom'),
+    ('top', 'top'),
+    ('outerwear', 'outerwear'),
+    ('dress', 'dress'),
+    ('jewelry', 'jewelry'),
+    ('shoes', 'shoes')
+)
+
+
 class Piece(models.Model):
-    CLOTHING_TYPE_CHOICES = (
-        ('bottom', 'bottom'),
-        ('top', 'top'),
-        ('outerwear', 'outerwear'),
-        ('dress', 'dress'),
-        ('jewelry', 'jewelry'),
-        ('shoes', 'shoes')
-    )
     image = models.ImageField(upload_to='piece_images')
     color = models.CharField(max_length=15)
     clothing_type = models.CharField(
