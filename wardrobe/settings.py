@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'outfit_organizer'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -105,5 +106,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/home/media/'
+MEDIA_ROOT = 'media/'
 MEDIA_URL = '/media/'
