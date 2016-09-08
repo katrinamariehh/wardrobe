@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>Clothing Types</h2>
-{% for clothing_type in object_list %}
-<li><a href="/pieces/{{ clothing_type }}">{{ clothing_type }}</a></li>
-{% endfor %}
+    {% for clothing_type in object_list %}
+        <li><a href="/pieces/{{ clothing_type }}">{{ clothing_type }}</a></li>
+    {% endfor %}
 {% endblock %}

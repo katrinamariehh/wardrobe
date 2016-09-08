@@ -25,6 +25,12 @@ class PieceTypeView(ListView):
     template_name = 'outfit_organizer/piece_type.html'
     queryset = Piece.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super(PieceTypeView, self).get_context_data(**kwargs)
+        piece_type = self.kwargs.get('piece_type')
+        context['piece_type'] = piece_type
+        return context
+
     def get_queryset(self):
         piece_type = self.kwargs.get('piece_type')
         return Piece.objects.filter(clothing_type=piece_type)

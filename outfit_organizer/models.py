@@ -4,22 +4,24 @@ from django.db import models
 
 
 CLOTHING_TYPE_CHOICES = (
-    ('bottom', 'bottom'),
-    ('top', 'top'),
+    ('bottoms', 'bottoms'),
+    ('tops', 'tops'),
     ('outerwear', 'outerwear'),
-    ('dress', 'dress'),
+    ('dresses', 'dresses'),
     ('jewelry', 'jewelry'),
-    ('shoes', 'shoes')
+    ('shoes', 'shoes'),
+    ('accessories', 'accessories'),
+    ('bags', 'bags')
 )
 
 
 class Piece(models.Model):
     image = models.ImageField(upload_to='piece_images')
-    color = models.CharField(max_length=15)
+    color = models.CharField(max_length=15, blank=True)
     clothing_type = models.CharField(
             max_length=15, choices=CLOTHING_TYPE_CHOICES)
-    name = models.CharField(max_length=20)
-    long_description = models.CharField(max_length=100)
+    name = models.CharField(max_length=30)
+    long_description = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return '%s' % self.name
