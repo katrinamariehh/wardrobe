@@ -3,8 +3,10 @@ from .models import Piece, Season, Outfit
 
 
 class PieceAdmin(admin.ModelAdmin):
-    list_display = ('name', 'image', 'color', 'clothing_type')
+    list_display = ('name', 'image_tag', 'color', 'clothing_type')
     search_fields= ['name']
+    readonly_fields = ('image_tag',)
+    list_filter = ('clothing_type',)
 
 
 admin.site.register(Piece, PieceAdmin)

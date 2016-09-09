@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<ul>
+    {% for outfit in object_list %}
+    <li>
+        {% for piece in outfit.pieces.all %}
+            <a href="/pieces/{{ piece.pk }}"><img src="{{ piece.image.url }}" style="height:150px"></a>
+        {% endfor %}
+    </li>
+    {% endfor %}
+<ul>
+{% endblock %}

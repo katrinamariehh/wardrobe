@@ -26,6 +26,14 @@ class Piece(models.Model):
     def __str__(self):
         return '%s' % self.name
 
+    def image_tag(self):
+        try:
+            return u'<img src="%s" height="100" width="auto" />' % (self.image.url)
+        except ValueError:
+            return u'<p>SearchImage has no associated image</p>'
+    image_tag.short_description = "image tag"
+    image_tag.allow_tags = True
+
 
 class Season(models.Model):
     name = models.CharField(max_length=15)

@@ -18,14 +18,17 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from outfit_organizer.views import (SeasonListView, SeasonOutfitListView,
                                     ClothingTypeListView, ClothingTypeSetView,
-                                    PieceListView, PieceDetailView)
+                                    PieceListView, PieceDetailView,
+                                    OutfitCreationView, OutfitListView)
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^seasons/$', SeasonListView.as_view()),
     url(r'^seasons/(?P<pk>[0-9]+)/$', SeasonOutfitListView.as_view()),
+    url(r'^outfits/$', OutfitListView.as_view()),
+    url(r'^outfits/create$', OutfitCreationView.as_view()),
     url(r'^pieces/$', PieceListView.as_view()),
     url(r'^pieces/(?P<pk>[0-9]+)/$', PieceDetailView.as_view()),
-    url(r'^clothing_type$', ClothingTypeListView.as_view()),
+    url(r'^clothing_type/$', ClothingTypeListView.as_view()),
     url(r'^clothing_type/(?P<piece_type>[0-9A-Za-z]+)/$', ClothingTypeSetView.as_view())
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import ListView
+from django.views.generic.edit import FormView
 from django.views.generic.detail import DetailView
 from .models import Season, Outfit, Piece, CLOTHING_TYPE_CHOICES
+from .forms import OutfitForm
 
 
 class SeasonListView(ListView):
@@ -51,6 +53,14 @@ class PieceListView(ListView):
 class PieceDetailView(DetailView):
     model = Piece
 
+
+class OutfitListView(ListView):
+    model = Outfit
+
+
+class OutfitCreationView(FormView):
+    form_class = OutfitForm
+    template_name = "outfit_organizer/create_outfit.html"
 
 
 # view for seeing all tops/bottoms/etc.

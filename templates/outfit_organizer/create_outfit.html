@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form id="post-form" class="form-vertical" method="post" action="/outfits/create">
+  {% csrf_token %}
+  {{ field }}
+<div class="input-group">
+    <fieldset class="form-group">
+        <label for="{{ form.tops.id_for_label }}">{{ form.tops.label }}</label>
+            <select size="10" multiple="multiple" class="form-control" id="tops">
+            {% for x, y in form.fields.tops.choices %}
+            <option value="{{ x }}">{{ y }}</option>
+            {% endfor %}
+        </select>
+    </fieldset>
+</div>
+<div class="input-group">
+    <fieldset class="form-group">
+        <label for="{{ form.bottoms.id_for_label }}">{{ form.bottoms.label }}</label>
+            <select size="10" multiple="multiple" class="form-control" id="bottoms">
+            {% for x, y in form.fields.bottoms.choices %}
+            <option value="{{ x }}">{{ y }}</option>
+            {% endfor %}
+        </select>
+    </fieldset>
+</div>
+<div class="input-group">
+    <fieldset class="form-group">
+        <label for="{{ form.outerwear.id_for_label }}">{{ form.outerwear.label }}</label>
+            <select size="10" multiple="multiple" class="form-control" id="outerwear">
+            {% for x, y in form.fields.outerwear.choices %}
+            <option value="{{ x }}">{{ y }}</option>
+            {% endfor %}
+        </select>
+    </fieldset>
+</div>
+<div class="input-group">
+    <fieldset class="form-group">
+        <label for="{{ form.dresses.id_for_label }}">{{ form.dresses.label }}</label>
+            <select size="10" multiple="multiple" class="form-control" id="dresses">
+            {% for x, y in form.fields.dresses.choices %}
+            <option value="{{ x }}">{{ y }}</option>
+            {% endfor %}
+        </select>
+    </fieldset>
+</div>
+<div class="input-group">
+    <fieldset class="form-group">
+        <label for="{{ form.jewelry.id_for_label }}">{{ form.jewelry.label }}</label>
+            <select size="10" multiple="multiple" class="form-control" id="jewelry">
+            {% for x, y in form.fields.jewelry.choices %}
+            <option value="{{ x }}">{{ y }}</option>
+            {% endfor %}
+        </select>
+    </fieldset>
+</div>
+<div class="input-group">
+    <fieldset class="form-group">
+        <label for="{{ form.shoes.id_for_label }}">{{ form.shoes.label }}</label>
+            <select size="10" multiple="multiple" class="form-control" id="shoes">
+            {% for x, y in form.fields.shoes.choices %}
+            <option value="{{ x }}">{{ y }}</option>
+            {% endfor %}
+        </select>
+    </fieldset>
+</div>
+<div class="input-group">
+    <fieldset class="form-group">
+        <label for="{{ form.accessories.id_for_label }}">{{ form.accessories.label }}</label>
+            <select size="10" multiple="multiple" class="form-control" id="accessories">
+            {% for x, y in form.fields.accessories.choices %}
+            <option value="{{ x }}">{{ y }}</option>
+            {% endfor %}
+        </select>
+    </fieldset>
+</div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+{% endblock %}
