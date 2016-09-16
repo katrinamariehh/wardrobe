@@ -49,6 +49,9 @@ class ClothingTypeListView(ListView):
 class PieceListView(ListView):
     model = Piece
 
+    def get_queryset(self):
+        return Piece.objects.all().order_by('-pk')
+
 
 class PieceDetailView(DetailView):
     model = Piece
@@ -61,6 +64,14 @@ class OutfitListView(ListView):
 class OutfitCreationView(FormView):
     form_class = OutfitForm
     template_name = "outfit_organizer/create_outfit.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(OutfitCreationView, self).get_context_data(**kwargs)
+        clothing_types = [clothing_type[0] for clothing_type in CLOTHING_TYPE_CHOICES]
+        for clothing_type in clothing_types:
+            context[clothing_type] = [piece.image_tag() for piece in Piece.objects.filter(clothing_type=clothing_type)]
+        context['clothing_types'] = clothing_types
+        return context
 
 
 # view for seeing all tops/bottoms/etc.

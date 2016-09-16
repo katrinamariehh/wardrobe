@@ -28,9 +28,18 @@ class Piece(models.Model):
 
     def image_tag(self):
         try:
-            return u'<img src="%s" height="100" width="auto" />' % (self.image.url)
+            return u'<img class="float-left" src="%s" height="100" width="auto" alt="%s" />' % (self.image.url, self.name)
         except ValueError:
-            return u'<p>SearchImage has no associated image</p>'
+            return u'<p>Piece has no associated image</p>'
+
+    def image_tag_with_name(self):
+        try:
+            return u'<img class="float-left" src="%s" height="100" width="auto" /><p>%s</p>' % (self.image.url, self.name)
+        except ValueError:
+            return u'<p>Piece has not associated image</p>'
+
+    image_tag_with_name.short_description = "image tag with name"
+    image_tag_with_name.allow_tags = True
     image_tag.short_description = "image tag"
     image_tag.allow_tags = True
 

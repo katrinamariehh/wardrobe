@@ -3,6 +3,6 @@
 {% block content %}
 <h2>{{ piece_type }}</h2>
     {% for piece in object_list %}
-            <img src="{{ piece.image.url }}" style="height:150px">
+            <a href="/pieces/{{ piece.pk }}"><img src="{{ piece.image.url }}" style="height:150px"></a>
     {% endfor %}
 {% endblock %}

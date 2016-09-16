@@ -1,6 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% autoescape off %}
+<h2>tops</h2>
+    <div class="row">
+        {% for top in tops %}{{ top }}{% endfor %}
+    </div>
+<h2>bottoms</h2>
+    <div class="row">
+        {% for bottom in bottoms %}{{ bottom }}{% endfor %}
+    </div>
+<h2>outerwear</h2>
+    <div class="row">
+        {% for piece in outerwear %}{{ piece }}{%  endfor%}
+    </div>
+<h2>dresses</h2>
+    <div class="row">
+        {% for dress in dresses %}{{ dress }}{% endfor %}
+    </div>
+<h2>jewelry</h2>
+    <div class="row">
+        {% for piece in jewelry %}{{ piece }}{% endfor %}
+    </div>
+<h2>shoes</h2>
+    <div class="row">
+        {% for pair in shoes %}{{ pair }}{% endfor %}
+    </div>
+<h2>accessories</h2>
+    <div class="row">
+        {% for accessory in accessories %}{{ accessory }}{% endfor %}
+
+{% endautoescape %}
+
 <form id="post-form" class="form-vertical" method="post" action="/outfits/create">
   {% csrf_token %}
   {{ field }}

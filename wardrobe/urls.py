@@ -16,12 +16,14 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.views.generic import TemplateView
 from outfit_organizer.views import (SeasonListView, SeasonOutfitListView,
                                     ClothingTypeListView, ClothingTypeSetView,
                                     PieceListView, PieceDetailView,
                                     OutfitCreationView, OutfitListView)
 
 urlpatterns = [
+    url(r'^$', TemplateView.as_view(template_name='home.html')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^seasons/$', SeasonListView.as_view()),
     url(r'^seasons/(?P<pk>[0-9]+)/$', SeasonOutfitListView.as_view()),
