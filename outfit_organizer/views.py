@@ -60,6 +60,9 @@ class PieceDetailView(DetailView):
 class OutfitListView(ListView):
     model = Outfit
 
+    def get_queryset(self):
+        return Outfit.objects.all().order_by('-pk')
+
 
 class OutfitCreationView(FormView):
     form_class = OutfitForm

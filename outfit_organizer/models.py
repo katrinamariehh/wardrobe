@@ -59,4 +59,4 @@ class Outfit(models.Model):
         items = []
         for piece in self.pieces.all():
             items.append(piece.name)
-            return ', '.join(items)
+        return ', '.join(items)

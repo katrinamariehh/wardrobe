@@ -23,7 +23,7 @@ from outfit_organizer.views import (SeasonListView, SeasonOutfitListView,
                                     OutfitCreationView, OutfitListView)
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name='home.html')),
+    url(r'^$', PieceListView.as_view()),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^seasons/$', SeasonListView.as_view()),
     url(r'^seasons/(?P<pk>[0-9]+)/$', SeasonOutfitListView.as_view()),
