@@ -36,7 +36,7 @@ class ClothingTypeSetView(ListView):
 
     def get_queryset(self):
         piece_type = self.kwargs.get('piece_type')
-        return Piece.objects.filter(clothing_type=piece_type)
+        return Piece.objects.filter(clothing_type=piece_type).order_by('color')
 
 
 class ClothingTypeListView(ListView):
@@ -50,7 +50,7 @@ class PieceListView(ListView):
     model = Piece
 
     def get_queryset(self):
-        return Piece.objects.all().order_by('-pk')
+        return Piece.objects.all().order_by('color')
 
 
 class PieceDetailView(DetailView):
