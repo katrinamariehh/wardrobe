@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView
-from django.views.generic.edit import FormView
+from django.views.generic.edit import FormView, UpdateView
 from django.views.generic.detail import DetailView
 from .models import Season, Outfit, Piece, CLOTHING_TYPE_CHOICES
 from .forms import OutfitForm
@@ -53,8 +53,16 @@ class PieceListView(ListView):
         return Piece.objects.all().order_by('color')
 
 
-class PieceDetailView(DetailView):
+class PieceDetailView(UpdateView):
     model = Piece
+    fields = ['color', 'clothing_type', 'name', 'long_description']
+    success_url = '/'
+
+    def get_context_data(self, **kwargs):
+        context = super(PieceDetailView, self).get_context_data(**kwargs)
+        piece = Piece.objects.get(pk=self.kwargs['pk'])
+        context['piece'] = piece
+        return context
 
 
 class OutfitListView(ListView):
